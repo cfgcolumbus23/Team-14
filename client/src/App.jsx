@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import LoginForm from './LoginForm';
+
 
 function App() {
     const [backendData, setBackendData] = useState([{}])
@@ -12,7 +14,10 @@ function App() {
         )
     }, [])
     return (
-        <div>App</div>
+        <div className="App">
+            <h1>Login Form</h1>
+            <LoginForm />
+        </div>
     )
 }
 
