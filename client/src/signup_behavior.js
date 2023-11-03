@@ -1,4 +1,4 @@
-const signupButton = document.getElementById('sign-in-button');
+const signupButton = document.getElementById('sign-up-button');
 
 signupButton.onclick() = () =>{
     //Gets Element From Button Form
@@ -12,7 +12,7 @@ signupButton.onclick() = () =>{
         method: 'POST',
         headers: {'Content-Type':'application/json'},
 
-        params: JSON.stringify({
+        body: JSON.stringify({
             firstName : firstName,
             lastName : lastName,
             email: email,
@@ -23,7 +23,7 @@ signupButton.onclick() = () =>{
         })
     }
     //Do function for checking if password is valid
-    
+
     if(isValidPassword){
         // send the request to the server
         fetch('/api/send-password', request);
