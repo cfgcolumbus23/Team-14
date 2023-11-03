@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import LoginForm from '/pages/LoginForm';
+import LoginForm from './/pages/LoginForm';
 
 
 function App() {
