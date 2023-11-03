@@ -5,7 +5,7 @@ class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
+      email: '',
       password: '',
     };
   }
@@ -18,7 +18,7 @@ class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     // Handle the form submission here
-    console.log('Username:', this.state.username);
+    console.log('Email:', this.state.email);
     console.log('Password:', this.state.password);
   }
 
@@ -26,12 +26,12 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={this.state.username}
+            id="email"
+            name="email"
+            value={this.state.email}
             onChange={this.handleInputChange}
           />
         </div>
