@@ -22,7 +22,19 @@ signupButton.onclick() = () =>{
             password: password
         })
     }
-    //Do function for checking if password is valid
+    
+    //Function to determine if password is valid (at least 8 characters with a number, uppercase
+    //and lowercase letter)
+    const hasUppercase = false;
+    const hasLowercase = false;
+    const hasDigit = false;
+    for (const i = 0; i < password.length; i++) {
+        const currentChar = password[i];
+        if (!hasUppercase && /^[A-Z]$/.test(currentChar)) { hasUppercase = true; }
+        else if (!hasLowercase && /^[a-z]$/.test(currentChar)) { hasLowercase = true; }
+        else if (!hasDigit && /^[0-9]$/.test(currentChar)) { hasDigit = true; }
+    }
+    isValidPassword = hasUppercase && hasLowercase && hasDigit && (i >= 8);
     
     if(isValidPassword){
         // send the request to the server
