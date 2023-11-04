@@ -110,6 +110,18 @@ async function main() {
         }
     });
 
+    //Get Request that returns all students in database
+    app.get('/api/get-all-students', async (req, res) => {
+      
+      try {
+        const usersCollection = client.db().collection('Users');
+        const users = await usersCollection.find({ admin: false });
+        res.json(users);
+      } catch (error) {
+        res.status(500).json({ error: 'Error fetching users' });
+      }
+    });
+
     //get the students class info from the database for the admin page
     app.get('/api/find-student-by-email', async (req, res)=>{
         try {
