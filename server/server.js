@@ -39,6 +39,7 @@ async function main() {
         });
     });
 
+    //validate a student login
     app.get('/api/is-valid-student/', async (req, res) => {
         try {
           const usersCollection = client.db().collection('Users');
@@ -63,6 +64,7 @@ async function main() {
         }
       });
 
+      //validates an admin user login
     app.get('/api/is-valid-admin/', async (req, res) => {
         try {
             const usersCollection = client.db().collection('Users');
@@ -107,6 +109,21 @@ async function main() {
         res.status(403).json({ error: 'Invalid admin sign-in' });
         }
     });
+
+    // //get the students class info from the database for the admin page
+    // app.get('/api/find-student-by-email',(req, res)=>{
+    //     try {
+    //       //get the collection from the database
+    //       const userCollection = client.db().collection('Users');
+    //       const email = req.params.email;
+          
+    //       //get the user from the database
+    //       const student = await userCollection.findOne({ email });
+
+    //       const classArray = student.
+
+    //     }
+    // })
 
     app.get("/api", (req, res) => {
         res.json({"users": ["userOne", "userTwo", "userThree"] })
