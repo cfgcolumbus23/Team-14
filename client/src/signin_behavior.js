@@ -1,9 +1,8 @@
-import React from 'react';
-
 function SignInButton() {
     const handleClick = () => {
         const email = document.getElementById('emailInput').value;
         const password = document.getElementById('passwordInput').value;
+        const firstName = document.getElementById('firstName').value;
         const isValidStudentSignIn = false;
         const isValidAdminSignIn = false;
 
@@ -23,11 +22,7 @@ function SignInButton() {
         }
     };
 
-    return (
-        <button id="sign-in-button" onClick={handleClick}>
-            Sign In
-        </button>
-    );
+    return handleClick;
 }
 
 export default SignInButton;

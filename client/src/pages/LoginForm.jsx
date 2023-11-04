@@ -1,6 +1,8 @@
 // LoginForm.js
 import React, { Component } from 'react';
-
+import SignUpButton from '../signup_behavior';
+import SignInButton
+ from '../signin_behavior';
 class LoginForm extends Component {
   constructor() {
     super();
@@ -17,9 +19,7 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // Handle the form submission here
-    console.log('Email:', this.state.email);
-    console.log('Password:', this.state.password);
+    SignInButton();
   }
 
   render() {
@@ -45,7 +45,7 @@ class LoginForm extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Sign In</button>
       </form>
     );
   }
