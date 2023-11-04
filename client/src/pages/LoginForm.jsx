@@ -1,57 +1,36 @@
 // LoginForm.js
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import SignUpButton from '../signup_behavior';
-import SignInButton from '../signin_behavior';
+import SignInButton from './array-signin-behavior';
+import isAdmin from './data-functions';
 
-class LoginForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isValidUser, setUser] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
-  handleInputChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
 
-    // Pass form values as parameters to SignInButton function
-    SignInButton(email, password);
-  }
+    // Call the check_auth function with email and password
+    setUser(SignInButton(email, password));
+    setAdmin(isAdmin(email) === "true");
+  };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <button type="submit">Sign In</button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Email:
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </label>
+      <br />
+      <label>Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
 }
 
 export default LoginForm;

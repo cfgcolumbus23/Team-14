@@ -1,5 +1,5 @@
 import React from 'react';
-import readUserData from './read_user_data.js';
+import readUserData from './read_user_data.';
 const fs = require('fs');
 
 //Adds a new student to the user database assuming their email is not
@@ -7,7 +7,7 @@ const fs = require('fs');
 // Pushes new Data into Function
 function arraySignupBehavior(firstName, lastName, email, password) {
     // Read existing user data from the Users database file
-    const database = readUserData('Users.txt');
+    const database = readUserData('client/src/pages/Users.txt');
   
     // Check if the email or password already exist in the database
     if (isDuplicateEmailOrPassword(database, email, password)) {
