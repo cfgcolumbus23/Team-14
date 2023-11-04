@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import AdminHome from './/pages/AdminHome';
+
 
 function App() {
-    const [backendData, setBackendData] = useState([{}])
-    useEffect(() => {
-        fetch("/api").then(
-            response => response.json()
-        ).then(
-            data => {
-                setBackendData(data)
-            }
-        )
-    }, [])
+    
     return (
-        <div>App</div>
+        <div className="App">
+            <h1>Home</h1>
+            <AdminHome />
+        </div>
     )
 }
 
