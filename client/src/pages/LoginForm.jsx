@@ -1,54 +1,44 @@
 // LoginForm.js
-import React, { Component } from 'react';
-import SignUpButton from '../signup_behavior';
-import SignInButton
- from '../signin_behavior';
-class LoginForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
+import React, { useState } from 'react';
+import SignInButton from './array-signin-behavior';
+import isAdmin from './data-functions';
+import { useNavigate } from 'react-router-dom';
+import AdminHome from './AdminHome';
 
-  handleInputChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
+function LoginForm() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    SignInButton();
-  }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <button type="submit">Sign In</button>
-      </form>
-    );
-  }
+    // Call the check_auth function with email and password
+    setUser(SignInButton(email, password));
+    setAdmin(isAdmin(email) === "true");
+    if (admin) {
+      navigate(AdminHome)
+    }
+    else if (!admin) {
+      //navigate('/')
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Email:
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </label>
+      <br />
+      <label>Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <button onClick={handleSubmit}>Submit</button>
+    </form>
+  );
 }
 
 export default LoginForm;
