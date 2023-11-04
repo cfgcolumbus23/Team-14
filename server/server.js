@@ -108,6 +108,18 @@ async function main() {
         }
     });
 
+    //Get Request that returns all students in database
+    app.get('/api/get-all-students', async (req, res) => {
+      
+      try {
+        const usersCollection = client.db().collection('Users');
+        const users = await usersCollection.find({ admin: false });
+        res.json(users);
+      } catch (error) {
+        res.status(500).json({ error: 'Error fetching users' });
+      }
+    });
+
     app.get("/api", (req, res) => {
         res.json({"users": ["userOne", "userTwo", "userThree"] })
     })
