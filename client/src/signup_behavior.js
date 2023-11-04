@@ -8,6 +8,8 @@ signupButton.onclick() = () =>{
     const email = document.getElementById('emailInput').value;
     const isValidPassword = false;
 
+
+
     const request = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -36,6 +38,7 @@ signupButton.onclick() = () =>{
     }
     isValidPassword = hasUppercase && hasLowercase && hasDigit && (i >= 8);
     
+
     if(isValidPassword){
         // send the request to the server
         fetch('/api/send-password', request);
