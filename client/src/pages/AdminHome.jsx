@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
 import SearchBar from '../Search'; 
 
-  
-const ItemList = ({ items }) => {
+  const items = [
+    { id: 1, name: 'Item 1' },
+    { id: 2, name: 'Item 2' },
+    { id: 3, name: 'Item 3' },
+  ];
 
-items = [
-    'Item 1',
-    'Item 2'
-]
+  function App() {
+    return (
+      <div>
+        <h3>Students</h3>
+        <SearchBar items={items} />
+      </div>
+    )
+  };
 
-
-  return (
-    <body>
-    <h3>Students</h3>
-    <SearchBar/>
-    <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-    </ul>
-     </body>
-  );
-};
-
-export default ItemList;
+export default App;

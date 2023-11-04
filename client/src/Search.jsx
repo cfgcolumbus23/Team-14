@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 
-const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+const SearchableList = ({ items }) => {
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = () => {
-    onSearch(searchTerm);
-  };
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  }
+
+  const filteredItems = items.filter(item =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
       <input
         type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search items"
+        onChange={handleSearch}
       />
-      <button onClick={handleSearch}>Search</button>
+      <ul>
+        {filteredItems.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   );
-};
+}
 
-export default SearchBar;
+export default SearchableList;
