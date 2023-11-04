@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import LoginForm from './/pages/LoginForm';
+import AdminHome from './/pages/AdminHome';
 
 
 function App() {
+    
     return (
         <div className="App">
-            <h1>Login Form</h1>
-            <LoginForm />
+            <h1>Home</h1>
+            <AdminHome />
         </div>
     )
 }
