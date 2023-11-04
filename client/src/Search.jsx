@@ -24,7 +24,7 @@ const SearchableList = ({ items }) => {
       <ul>
         {filteredItems.map(item => (
           <li key={item.id}>
-            <Link to={`/adminstudentview/${item.id}`}>{item.name}</Link>
+            <Link to={`/adminstudentview/`} relative='./pages/AdminStudentView'>{item.name}</Link>
           </li>
         ))}
       </ul>

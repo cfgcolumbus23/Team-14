@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import CreateTestPage from './pages/CreateTest';
+import StudentViewPage from './pages/AdminStudentView';
 
 import {
   createBrowserRouter,
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <App/>
   },
   {
-    path: "createtest",
-    element: <CreateTestPage/>,
+    path: "adminstudentview",
+    element: <StudentViewPage/>,
   }
 ])
 
