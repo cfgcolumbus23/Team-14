@@ -1,5 +1,5 @@
 import React from 'react';
-import readUserData from './read_user_data.js';
+import readUserData from '../server/read_user_data.js';
 const fs = require('fs');
 
 //Adds a new student to the user database assuming their email is not

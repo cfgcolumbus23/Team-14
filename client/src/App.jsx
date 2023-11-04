@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import AdminHome from './/pages/AdminHome';
-import Rewards from './/pages/Rewards'
-import SignInButton from './signin_behavior';
-import SignUpButton from './signup_behavior';
-import Login from './/pages/Login';
+import React, { useEffect, useState } from 'react';
+import signUp from './pages/signUp';
+import SignUpForm from './pages/SignUpForm';
+
+
 
 function App() {
     
@@ -15,7 +14,7 @@ function App() {
             </div>
             <div className='body'>
                 <h1>Student Home Page</h1>
-                <Rewards />
+                <signUp />
             </div>
         </div>
     )
