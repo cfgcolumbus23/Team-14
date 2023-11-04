@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './App.css'
+import { Link } from 'react-router-dom';
+import adminstudentview from './/pages/AdminStudentView';
+
 
 const SearchableList = ({ items }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,7 +23,9 @@ const SearchableList = ({ items }) => {
       />
       <ul>
         {filteredItems.map(item => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id}>
+            <Link to={`/adminstudentview/${item.id}`}>{item.name}</Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -3,10 +3,11 @@ import SearchBar from '../Search';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const items = [
-  { id: 1, name: 'Item 1' },
-  { id: 2, name: 'Item 2' },
-  { id: 3, name: 'Item 3' },
+  { id: 1, name: 'Student 1' },
+  { id: 2, name: 'Student 2' },
+  { id: 3, name: 'Student 3' },
 ];
+
 
 function App() {
   const navigate = useNavigate(); // Initialize the useNavigate hook
@@ -15,6 +16,8 @@ function App() {
     // Redirect to the "createtest" page
     navigate('/createtest');
   };
+
+
 
   return (
     <div>

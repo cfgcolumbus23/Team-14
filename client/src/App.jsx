@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminHome from './/pages/AdminHome';
 import './App.css'
-
 function App() {
 
     return (
