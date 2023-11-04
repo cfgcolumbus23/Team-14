@@ -40,6 +40,30 @@ async function main(){
 
     });
 
+    app.get('/api/search-students', (req, res) => {
+        const searchTerm = req.params.name; 
+    
+        if (!searchTerm) {
+            return res.status(400).json({ error: 'Missing searchTerm in query parameters' });
+        }
+    
+        const usersCollection = db.collection('Users');
+    
+        usersCollection.find({ name: searchTerm }).toArray((err, results) => {
+            if (err) {
+                console.error('Error Searching for Students', err);
+                return res.status(500).json({ error: 'Error Querying Database' });
+            }
+    
+            if (results.length === 0) {
+                return res.status(404).json({ message: 'No students found' });
+            }
+    
+            res.status(200).json({ students: results });
+        });
+    });
+    
+
 
 
 
