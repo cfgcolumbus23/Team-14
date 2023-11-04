@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AdminHome from './pages/AdminStudentView';
 import './App.css';
 
-function App() {
+const App = ()=> {
   return (
     <div className="App">
       <div className="header">
