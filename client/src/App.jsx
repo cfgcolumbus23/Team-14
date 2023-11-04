@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import AdminHome from './/pages/AdminHome';
-import StudentHome from './pages/StudentHome';
-import './App.css'
-
+import Rewards from './/pages/Rewards'
+import SignInButton from './signin_behavior';
+import SignUpButton from './signup_behavior';
+import Login from './/pages/Login';
 
 function App() {
     
