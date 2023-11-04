@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
 #progress {
     height: 3.0rem;
     width: 25rem
 }
 .colored {
     accent-color: red;
+}
+.StudentHome {
+    font-family: 'Inter', sans-serif;
 }
