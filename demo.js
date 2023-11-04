@@ -35,6 +35,18 @@ async function main() {
         });
     });
 
+    //Get Request for going to Home Page
+    app.get('/api/go-to-student-page',(req,res)=>{
+        const filePath = path.join(__dirname,'/public','student-home-page.html');
+        res.sendFile(filePath);
+    })
+
+    //Get Request for going to Admin Page
+    app.get('/api/go-to-admin-page',(req,res)=>{
+        const filePath = path.join(__dirname,'/public','admin-page.html');
+        res.sendFile(filePath);
+    })
+
     app.listen(3000, () => {
         console.log("Server is listening");
     });
