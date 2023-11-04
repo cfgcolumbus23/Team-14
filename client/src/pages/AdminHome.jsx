@@ -9,10 +9,10 @@ import SearchBar from '../Search';
 
   function App() {
     return (
-      <div>
+      <body>
         <h3>Students</h3>
         <SearchBar items={items} />
-      </div>
+      </body>
     )
   };
 
