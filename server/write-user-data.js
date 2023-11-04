@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+//Will write all of the user info to the file to store it
 function writeArrayToFile(arrayOfArrays, filename) {
   let csvData = '';
 
