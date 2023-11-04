@@ -1,3 +1,5 @@
+
+
 // Import Libraries
 const { MongoClient } = require('mongodb');
 const express = require('express');
@@ -25,6 +27,8 @@ async function main() {
         const dataToInsert = req.body;
         const usersCollection = client.db().collection('Users');
 
+        
+
         usersCollection.insertOne(dataToInsert, (err, result) => {
             if (err) {
                 console.error('Error Signing User Up', err);
@@ -35,16 +39,77 @@ async function main() {
         });
     });
 
-    //Get Request for going to Home Page
-    app.get('/api/go-to-student-page',(req,res)=>{
-        const filePath = path.join(__dirname,'/public','student-home-page.html');
-        res.sendFile(filePath);
-    })
+    app.get('/api/is-valid-student/', async (req, res) => {
+        try {
+          const usersCollection = client.db().collection('Users');
+          const email = req.query.email; // Assuming the email is sent as a query parameter
+      
+          // Find a user with the provided email
+          const user = await usersCollection.findOne({ email });
+      
+          if (user && user.Admin === false) {
+            //Ensure the correct password was entered for the user
+            if (req.query.password === user.Password) {
+              res.send(true); // Passwords match
+            } else {
+              res.send(false); // Passwords don't match
+            }
+          } else {
+            res.send(false); // User not found or is an admin
+          }
+        } catch (error) {
+          console.error(error);
+          res.status(500).send(false); // Internal server error
+        }
+      });
 
-    //Get Request for going to Admin Page
-    app.get('/api/go-to-admin-page',(req,res)=>{
-        const filePath = path.join(__dirname,'/public','admin-page.html');
-        res.sendFile(filePath);
+    app.get('/api/is-valid-admin/', async (req, res) => {
+        try {
+            const usersCollection = client.db().collection('Users');
+            const email = req.query.email; // Assuming the email is sent as a query parameter
+        
+            // Find a user with the provided email
+            const user = await usersCollection.findOne({ email });
+        
+            if (user && user.Admin === true) {
+              //Ensure the correct password was entered for the user
+              if (req.query.password === user.Password) {
+                res.send(true); // Passwords match
+              } else {
+                res.send(false); // Passwords don't match
+              }
+            } else {
+              res.send(false); // User not found or is an admin
+            }
+          } catch (error) {
+            console.error(error);
+            res.status(500).send(false); // Internal server error
+          }
+    }) 
+
+
+    // Define your route to redirect to the student page
+    app.get('/api/go-to-student-page', (req, res) => {
+        if (req.isValidStudentSignIn) {
+        // Redirect to the student page in your React application
+        res.redirect('/student-page');
+        } else {
+        res.status(403).json({ error: 'Invalid student sign-in' });
+        }
+    });
+    
+    // Define your route to redirect to the admin page
+    app.get('/api/go-to-admin-page', (req, res) => {
+        if (req.isValidAdminSignIn) {
+        // Redirect to the admin page in your React application
+        res.redirect('/admin-page');
+        } else {
+        res.status(403).json({ error: 'Invalid admin sign-in' });
+        }
+    });
+
+    app.get("/api", (req, res) => {
+        res.json({"users": ["userOne", "userTwo", "userThree"] })
     })
 
     app.listen(3000, () => {

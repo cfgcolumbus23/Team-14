@@ -1,6 +1,6 @@
 const signupButton = document.getElementById('sign-up-button');
 
-signupButton.onclick() = () =>{
+function signUpButton() {
     //Gets Element From Button Form
     const firstName = document.getElementById('firstNameInput').value;
     const lastName = document.getElementById('lastNameInput').value;

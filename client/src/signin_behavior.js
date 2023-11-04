@@ -1,25 +1,51 @@
-const signinButton = document.getElementById('sign-in-button');
+function SignInButton() {
+    const handleClick = () => {
+        const email = document.getElementById('emailInput').value;
+        const password = document.getElementById('passwordInput').value;
+        const firstName = document.getElementById('firstName').value;
+        const isValidStudentSignIn = false;
+        const isValidAdminSignIn = false;
 
-signinButton.onclick() = ()=>{
-    const email = document.getElementById('emailInput').value;
-    const password = document.getElementById('passwordInput').value;
-    const isValidStudentSignIn = false;
-    const isValidAdminSignIn = false;
 
-    const request = {
-        method: 'GET',
-        headers: {'Content-Type':'application/json'},
-        params: JSON.stringify({
-            firstName : firstName
-        })
-    }
+        const request = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            params: JSON.stringify({
+                firstName: firstName,
+                password: password,
+                email: email
+            }),
+        };
 
+
+    isValidStudentSignIn = fetch('/api/is-valid-student',request);
+    isValidAdminSignIn = fetch('/api/is-valid-admin',request);
+
+        // Check that it is a valid sign-in
+        if (isValidStudentSignIn) {
+            const request = {
+                method: 'GET',
+                headers: {'Content-Type':'application/json'},
+                params: JSON.stringify({
+                    isValidStudentSignIn: isValidStudentSignIn
+                })
+            }
     
-    //Check that it is a valid sign in 
-    if(isValidSignStudentIn){
-        fetch('/api/go-to-student-page');
-    }else if(isValidAdminSignIn){
-        fetch('api/go-to-admin-page');
-    }
+            fetch('/api/go-to-student-page');
+        } else if (isValidAdminSignIn) {
+            const request = {
+                method: 'GET',
+                headers: {'Content-Type':'application/json'},
+                params: JSON.stringify({
+                    isValidAdminSignIn: isValidAdminSignIn
+                })
+            }    
+            fetch('/api/go-to-admin-page');
+        }
+    };
 
+    return handleClick;
 }
+
+
+export default SignInButton;

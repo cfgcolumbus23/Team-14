@@ -18,5 +18,8 @@
   "homepage": "https://github.com/cfgcolumbus23/Team-14#readme",
   "dependencies": {
     "mongodb": "^6.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
