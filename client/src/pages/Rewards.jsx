@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Rewards.css';
 
   
 const Rewards = () => {
@@ -12,13 +13,16 @@ const Rewards = () => {
     items['Mug'] = {'imgLink': 'https://assets.eflorist.com/site/EF-12616/assets/products/CHR_/sku8260338.jpg', 'points': 300}
     
     return (
-        <div>
-        <h3>Rewards</h3>
-        <ul>
-            {Object.entries(items).map(([reward, value], index) => (
-                <li key={index}><img src={value.imgLink} alt="reward" /> Points: {value.points}</li>
-            ))}
-        </ul>
+        <div class="Rewards">
+            <h3>Rewards</h3>
+            <ul>
+                {Object.entries(items).map(([reward, value], index) => (
+                    <li key={index}>
+                        <img src={value.imgLink} alt="reward" />
+                        <p>{value.points}</p>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
