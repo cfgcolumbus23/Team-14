@@ -39,15 +39,54 @@ async function main() {
         });
     });
 
-    app.get('/api/is-valid-student/', (req, res) => {
-            req.params.email,
-            req.params.password
+    //validate a student login
+    app.get('/api/is-valid-student/', async (req, res) => {
+        try {
+          const usersCollection = client.db().collection('Users');
+          const email = req.query.email; // Assuming the email is sent as a query parameter
+      
+          // Find a user with the provided email
+          const user = await usersCollection.findOne({ email });
+      
+          if (user && user.Admin === false) {
+            //Ensure the correct password was entered for the user
+            if (req.query.password === user.Password) {
+              res.send(true); // Passwords match
+            } else {
+              res.send(false); // Passwords don't match
+            }
+          } else {
+            res.send(false); // User not found or is an admin
+          }
+        } catch (error) {
+          console.error(error);
+          res.status(500).send(false); // Internal server error
+        }
+      });
 
-            
-    }) 
-
-    app.get('/api/is-valid-admin/', (req, res) => {
-
+      //validates an admin user login
+    app.get('/api/is-valid-admin/', async (req, res) => {
+        try {
+            const usersCollection = client.db().collection('Users');
+            const email = req.query.email; // Assuming the email is sent as a query parameter
+        
+            // Find a user with the provided email
+            const user = await usersCollection.findOne({ email });
+        
+            if (user && user.Admin === true) {
+              //Ensure the correct password was entered for the user
+              if (req.query.password === user.Password) {
+                res.send(true); // Passwords match
+              } else {
+                res.send(false); // Passwords don't match
+              }
+            } else {
+              res.send(false); // User not found or is an admin
+            }
+          } catch (error) {
+            console.error(error);
+            res.status(500).send(false); // Internal server error
+          }
     }) 
 
 
@@ -70,6 +109,21 @@ async function main() {
         res.status(403).json({ error: 'Invalid admin sign-in' });
         }
     });
+
+    // //get the students class info from the database for the admin page
+    // app.get('/api/find-student-by-email',(req, res)=>{
+    //     try {
+    //       //get the collection from the database
+    //       const userCollection = client.db().collection('Users');
+    //       const email = req.params.email;
+          
+    //       //get the user from the database
+    //       const student = await userCollection.findOne({ email });
+
+    //       const classArray = student.
+
+    //     }
+    // })
 
     app.get("/api", (req, res) => {
         res.json({"users": ["userOne", "userTwo", "userThree"] })
