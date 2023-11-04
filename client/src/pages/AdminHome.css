@@ -1,0 +1,12 @@
+.AdminHome ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack <li> elements vertically */
+    align-items: center; /* Center <li> elements horizontally */
+  }
+  
+.AdminHome li {
+    text-align: left; /* Left-align the text within each <li> */
+    margin: 5px 0; /* Add margin as needed for spacing between items */
+}

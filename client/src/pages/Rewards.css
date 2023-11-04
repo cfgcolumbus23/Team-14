@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Pixelify+Sans&display=swap');
+* {
+    box-sizing: border-box;
+}
 img {
-    width: 10rem;
+    max-width: 100%;
+    height: auto;
 }
 
 .Rewards ul {
@@ -12,9 +17,20 @@ img {
 }
 
 .Rewards li {
+    width: 25rem; /* Adjust the width based on your grid layout and margins */
+    margin: 10px; /* Adjust margin as needed to control the spacing */
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .Rewards p {
-    margin: 10px 0;
+    text-align: center;
+}
+
+.Rewards h3 {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 5rem;
+    padding: 1px;
+    text-align: center;
 }

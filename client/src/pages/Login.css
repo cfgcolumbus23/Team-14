@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Pixelify+Sans&display=swap');
+#submit {
+    font-family: 'Inter', sans-serif;
+}
+
+.form {
+    border-style: solid;
+    border-radius:1rem;
+    border-color: gray;
+    margin: 10px;
+    padding:0px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-width: 1px;
+    height: auto;
+
+}

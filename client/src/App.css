@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Luckiest+Guy&family=Short+Stack&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Jockey+One&family=Rubik+Spray+Paint&display=swap');
 .body {
+    box-sizing: border-box;
     color: #000;
     font-family: 'Inter', sans-serif;
     font-size: 26px;
@@ -8,6 +9,7 @@
     line-height: normal;
     margin-left: 0;
     padding-left: 40px;
+    text-align: center;
 }
 
 .header {
@@ -22,7 +24,8 @@
 .header h1 {
     color: #B40909;
     margin: 10px;
-    font-family: 'Short Stack', cursive;;
+    font-family: 'Jockey One', sans-serif;
+    letter-spacing: 5px;
 }
 
 .header h3 {
@@ -39,3 +42,4 @@ ul {
 input {
     size: 50px;
 }
+

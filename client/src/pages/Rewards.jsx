@@ -15,6 +15,8 @@ const Rewards = () => {
     return (
         <div class="Rewards">
             <h3>Rewards</h3>
+            <p>Redeem your points for rewards here!</p>
+            <hr></hr>
             <ul>
                 {Object.entries(items).map(([reward, value], index) => (
                     <li key={index}>

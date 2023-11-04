@@ -4,6 +4,7 @@ import Rewards from './/pages/Rewards'
 import SignInButton from './signin_behavior';
 import SignUpButton from './signup_behavior';
 import Login from './/pages/Login';
+import './App.css'
 
 function App() {
     
@@ -15,7 +16,7 @@ function App() {
             </div>
             <div className='body'>
                 <h1>Student Home Page</h1>
-                <Rewards />
+                <Login />
             </div>
         </div>
     )
