@@ -14,7 +14,7 @@ function App() {
             </div>
             <div className='body'>
                 <h1>Student Home Page</h1>
-                <AdminHome />
+                <StudentHome />
             </div>
         </div>
     )

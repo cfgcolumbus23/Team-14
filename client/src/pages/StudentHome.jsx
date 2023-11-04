@@ -15,7 +15,6 @@ const StudentHome = ( {courses} ) => {
     const fractionTaken = takenCoursesCount / Object.keys(courses).length;
     return (
         <div class="StudentHome">
-            <h2>Welcome, Student!</h2>
             <h3>Courses</h3>
             <progress class="colored" id="progress" value={fractionTaken * 100} max="100" > ${fractionTaken * 100}% </progress>
             <ul>
@@ -23,7 +22,7 @@ const StudentHome = ( {courses} ) => {
                 <li key={index}><a href={value.link}>{course}</a></li>
             ))}
             </ul>
-            
+            <h3>Rewards</h3>
         </div>
     )
 }
