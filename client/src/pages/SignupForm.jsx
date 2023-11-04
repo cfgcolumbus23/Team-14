@@ -11,7 +11,7 @@ function Login(){
       e.preventDefault();
 
       try{
-          await axios.post("http://localhost:3000/",{
+          await axios.post("http://localhost:3000/signup",{
           })
 
       }catch(e){
@@ -33,7 +33,7 @@ function Login(){
                 <p>OR</p>
                 <br />
 
-                <Link to="/signup">Signup Page</Link>
+                <Link to="/signin">Login Page</Link>
         </div>
     )
 }

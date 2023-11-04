@@ -1,51 +1,33 @@
+import axios from 'axios';
+
 function SignInButton() {
-    const handleClick = () => {
-        const email = document.getElementById('emailInput').value;
-        const password = document.getElementById('passwordInput').value;
-        const firstName = document.getElementById('firstName').value;
-        const isValidStudentSignIn = false;
-        const isValidAdminSignIn = false;
+  const handleClick = () => {
+    const email = document.getElementById('emailInput').value;
+    const password = document.getElementById('passwordInput').value;
 
-
-        const request = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            params: JSON.stringify({
-                firstName: firstName,
-                password: password,
-                email: email
-            }),
-        };
-
-
-    isValidStudentSignIn = fetch('/api/is-valid-student',request);
-    isValidAdminSignIn = fetch('/api/is-valid-admin',request);
-
-        // Check that it is a valid sign-in
-        if (isValidStudentSignIn) {
-            const request = {
-                method: 'GET',
-                headers: {'Content-Type':'application/json'},
-                params: JSON.stringify({
-                    isValidStudentSignIn: isValidStudentSignIn
-                })
-            }
-    
-            fetch('/api/go-to-student-page');
-        } else if (isValidAdminSignIn) {
-            const request = {
-                method: 'GET',
-                headers: {'Content-Type':'application/json'},
-                params: JSON.stringify({
-                    isValidAdminSignIn: isValidAdminSignIn
-                })
-            }    
-            fetch('/api/go-to-admin-page');
-        }
+    const requestData = {
+      password: password,
+      email: email,
     };
 
-    return handleClick;
-}
+    axios.post('/api/signin', requestData)
+      .then((response) => {
+        if (response.data.isValidStudentSignIn) {
+          // Redirect to the student page in your React application
+          window.location.href = '/student-page';
+        } else if (response.data.isValidAdminSignIn) {
+          // Redirect to the admin page in your React application
+          window.location.href = '/admin-page';
+        } else {
+          console.log('Invalid sign-in');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
+  return handleClick;
+}
 
 export default SignInButton;

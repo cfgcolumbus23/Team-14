@@ -90,25 +90,28 @@ async function main() {
     }) 
 
 
-    // Define your route to redirect to the student page
-    app.get('/api/go-to-student-page', (req, res) => {
-        if (req.isValidStudentSignIn) {
-        // Redirect to the student page in your React application
-        res.redirect('/student-page');
-        } else {
-        res.status(403).json({ error: 'Invalid student sign-in' });
-        }
-    });
+    app.get('/api/go-to-student-page/:email/:password', async (req, res) => {
+      const { email, password } = req.params;
     
-    // Define your route to redirect to the admin page
-    app.get('/api/go-to-admin-page', (req, res) => {
-        if (req.isValidAdminSignIn) {
-        // Redirect to the admin page in your React application
-        res.redirect('/admin-page');
+      try {
+        const usersCollection = client.db().collection('Users');
+        
+        // Check if there is a matching document in the Users collection
+        const user = await usersCollection.findOne({ email, password });
+    
+        if (user && user.identity === true) {
+          // If the user is found and the identity field is true, set isValidStudent to true
+          res.json({ isValidStudent: true });
         } else {
-        res.status(403).json({ error: 'Invalid admin sign-in' });
+          // If the user is not found or the identity field is false, set isValidStudent to false
+          res.json({ isValidStudent: false });
         }
+      } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Server error' });
+      }
     });
+
 
     //Get Request that returns all students in database
     app.get('/api/get-all-students', async (req, res) => {
