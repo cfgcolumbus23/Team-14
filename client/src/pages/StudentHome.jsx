@@ -1,8 +1,8 @@
 import React from 'react';
 import './StudentHome.css';
 
-const StudentHome = ( {courses} ) => {
-    courses = {}
+const StudentHome = () => {
+    let courses = {}
     courses['Northstar Digital: Basic Computer Skills Course'] = {'link': 'https://nsdiglit.org/practice-computers', 'taken': true};
     courses['Northstar Digital: Email Course'] = {'link': 'https://assessment.digitalliteracyassessment.org/email/practice/understanding-email', 'taken': false};
     courses['NorthStar Digital: Word Course'] = {'link': 'https://nsdiglit.org/ms-word', 'taken':true};
