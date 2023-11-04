@@ -1,8 +1,8 @@
 // LoginForm.js
 import React, { Component } from 'react';
 import SignUpButton from '../signup_behavior';
-import SignInButton
- from '../signin_behavior';
+import SignInButton from '../signin_behavior';
+
 class LoginForm extends Component {
   constructor() {
     super();
@@ -19,7 +19,10 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    SignInButton();
+    const { email, password } = this.state;
+
+    // Pass form values as parameters to SignInButton function
+    SignInButton(email, password);
   }
 
   render() {
