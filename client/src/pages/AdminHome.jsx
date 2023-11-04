@@ -1,26 +1,32 @@
-import React, { Component } from 'react';
-import SearchBar from '../Search'; 
+import React from 'react';
+import SearchBar from '../Search';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-  
-const ItemList = ({ items }) => {
+const items = [
+  { id: 1, name: 'Student 1' },
+  { id: 2, name: 'Student 2' },
+  { id: 3, name: 'Student 3' },
+];
 
-items = [
-    'Item 1',
-    'Item 2'
-]
+
+function AdminHome() {
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  const handleCreateTest = () => {
+    // Redirect to the "createtest" page
+    navigate('/createtest');
+  };
+
 
 
   return (
-    <body>
-    <h3>Students</h3>
-    <SearchBar/>
-    <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-    </ul>
-     </body>
-  );
-};
+    <div>
+      <h3>Students</h3>
+      <SearchBar items={items} />
 
-export default ItemList;
+      <button onClick={handleCreateTest}>Create a Test</button>
+    </div>
+  );
+}
+
+export default AdminHome;
