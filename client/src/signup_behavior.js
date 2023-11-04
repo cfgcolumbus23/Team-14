@@ -12,7 +12,7 @@ signupButton.onclick() = () =>{
         method: 'POST',
         headers: {'Content-Type':'application/json'},
 
-        params: JSON.stringify({
+        body: JSON.stringify({
             firstName : firstName,
             lastName : lastName,
             email: email,
