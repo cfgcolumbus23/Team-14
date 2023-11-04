@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AdminHome from './pages/AdminStudentView';
+import AdminStudentView from './pages/AdminStudentView';
 import './App.css';
 
 const App = ()=> {
@@ -10,8 +10,7 @@ const App = ()=> {
         <h2>Welcome!</h2>
       </div>
       <div className="body">
-        <h1>Home</h1>
-        <AdminHome />
+        <AdminStudentView />
       </div>
     </div>
   );
