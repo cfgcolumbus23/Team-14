@@ -23,7 +23,7 @@ signupButton.onclick() = () =>{
         })
     }
     //Do function for checking if password is valid
-
+    
     if(isValidPassword){
         // send the request to the server
         fetch('/api/send-password', request);
