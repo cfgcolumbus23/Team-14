@@ -39,6 +39,38 @@ async function main() {
         });
     });
 
+    app.get('/api/is-valid-student/', (req, res) => {
+            req.params.email,
+            req.params.password
+
+            
+    }) 
+
+    app.get('/api/is-valid-admin/', (req, res) => {
+
+    }) 
+
+
+    // Define your route to redirect to the student page
+    app.get('/api/go-to-student-page', (req, res) => {
+        if (req.isValidStudentSignIn) {
+        // Redirect to the student page in your React application
+        res.redirect('/student-page');
+        } else {
+        res.status(403).json({ error: 'Invalid student sign-in' });
+        }
+    });
+    
+    // Define your route to redirect to the admin page
+    app.get('/api/go-to-admin-page', (req, res) => {
+        if (req.isValidAdminSignIn) {
+        // Redirect to the admin page in your React application
+        res.redirect('/admin-page');
+        } else {
+        res.status(403).json({ error: 'Invalid admin sign-in' });
+        }
+    });
+
     app.get("/api", (req, res) => {
         res.json({"users": ["userOne", "userTwo", "userThree"] })
     })
