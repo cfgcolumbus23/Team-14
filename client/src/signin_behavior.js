@@ -2,7 +2,6 @@ function SignInButton() {
     const handleClick = () => {
         const email = document.getElementById('emailInput').value;
         const password = document.getElementById('passwordInput').value;
-        const firstName = document.getElementById('firstName').value;
         const isValidStudentSignIn = false;
         const isValidAdminSignIn = false;
 
@@ -11,7 +10,6 @@ function SignInButton() {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             params: JSON.stringify({
-                firstName: firstName,
                 password: password,
                 email: email
             }),
