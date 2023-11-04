@@ -17,3 +17,6 @@ function readUserData(filePath){
     }
 
 }
+
+//Export Function
+export default readUserData;

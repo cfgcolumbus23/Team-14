@@ -1,31 +1,41 @@
 import React from 'react';
-import {database} from './data.js';
+import readUserData from './read_user_data.js';
 const fs = require('fs');
 
-//Pushes new Data into Function
-function arraySignupBehavior(firstName,lastName,email,password){
-    const isValidPassword = isValidPassword(password);
-    //Creates New DataPoint with default functions
-    const newData = [firstName,lastName,false,0,0,0,password,email];
 
-    // Ensure that the newData argument is an array with the expected format
-  if (isValidPassword) {
-    //Appends to "Database" file
-    fs.appendFile('Users.txt',newData,(err)=>{
-        if(err){
-            console.error('Error Appending to the file.',err);
-        }else{
-            console.log('Data Appended to File.');
-        }
-    })
-    console.log('New data added to the database:', newData);
-  } else {
-    console.error('Invalid data format. The newData should be an array with 8 elements.');
+// Pushes new Data into Function
+function arraySignupBehavior(firstName, lastName, email, password) {
+    // Read existing user data from the Users database file
+    const database = readUserData('Users.txt');
+  
+    // Check if the email or password already exist in the database
+    if (isDuplicateEmailOrPassword(database, email, password)) {
+      console.error('Invalid Credentials. Email or password already exists.');
+      return null;
+    }
+  
+    // Create a new data point
+    const newData = [firstName, lastName, false, 0, 0, 0, password, email];
+    
+    // Append the new data to the file
+    const newDataString = newData.join(',') + '\n'; // Convert to a comma-separated string with a newline
+    fs.appendFile('Users.txt', newDataString, (err) => {
+      if (err) {
+        console.error('Error appending to the file.', err);
+      } else {
+        console.log('Data Appended to File.');
+      }
+    });
   }
 
-}
+  function isDuplicateEmailOrPassword(database, email, password) {
+    const isDuplicate = false;
+    for (const data of database) {
+      if (data[6] === password || data[7] === email) {
+        return isDuplicate = true; // Email or password already exists
+      }
+    }
 
-function isValidPassword(password){
     //Function to determine if password is valid (at least 8 characters with a number, uppercase
     //and lowercase letter)
     const hasUppercase = false;
@@ -38,6 +48,9 @@ function isValidPassword(password){
         else if (!hasDigit && /^[0-9]$/.test(currentChar)) { hasDigit = true; }
     }
     isValidPassword = hasUppercase && hasLowercase && hasDigit && (i >= 8);
+    
 
-}
+    return !isDuplicate && isValidPassword; // No duplicates found and valid password
+  }
+
 export default arraySignupBehavior;
