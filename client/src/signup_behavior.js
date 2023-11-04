@@ -1,4 +1,4 @@
-const signupButton = document.getElementById('sign-in-button');
+const signupButton = document.getElementById('sign-up-button');
 
 signupButton.onclick() = () =>{
     //Gets Element From Button Form
