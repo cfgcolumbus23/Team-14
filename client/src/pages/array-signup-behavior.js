@@ -1,5 +1,5 @@
-import React from 'react';
-import readUserData from './read_user_data.';
+import React from '/react';
+import readUserData from './read_user_data';
 const fs = require('fs');
 
 //Adds a new student to the user database assuming their email is not
@@ -8,6 +8,7 @@ const fs = require('fs');
 function arraySignupBehavior(firstName, lastName, email, password) {
     // Read existing user data from the Users database file
     const database = readUserData('client/src/pages/Users.txt');
+
   
     // Check if the email or password already exist in the database
     if (isDuplicateEmailOrPassword(database, email, password)) {
@@ -42,13 +43,14 @@ function arraySignupBehavior(firstName, lastName, email, password) {
     const hasUppercase = false;
     const hasLowercase = false;
     const hasDigit = false;
-    for (const i = 0; i < password.length; i++) {
+  let i = 0;
+    for (i = 0; i < password.length; i++) {
         const currentChar = password[i];
         if (!hasUppercase && /^[A-Z]$/.test(currentChar)) { hasUppercase = true; }
         else if (!hasLowercase && /^[a-z]$/.test(currentChar)) { hasLowercase = true; }
         else if (!hasDigit && /^[0-9]$/.test(currentChar)) { hasDigit = true; }
     }
-    isValidPassword = hasUppercase && hasLowercase && hasDigit && (i >= 8);
+    var isValidPassword = hasUppercase && hasLowercase && hasDigit && (i >= 8);
     
 
     return !isDuplicate && isValidPassword; // No duplicates found and valid password
