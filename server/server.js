@@ -110,20 +110,25 @@ async function main() {
         }
     });
 
-    // //get the students class info from the database for the admin page
-    // app.get('/api/find-student-by-email',(req, res)=>{
-    //     try {
-    //       //get the collection from the database
-    //       const userCollection = client.db().collection('Users');
-    //       const email = req.params.email;
+    //get the students class info from the database for the admin page
+    app.get('/api/find-student-by-email', async (req, res)=>{
+        try {
+          //get the collection from the database
+          const userCollection = client.db().collection('Users');
+          const email = req.params.email;
           
-    //       //get the user from the database
-    //       const student = await userCollection.findOne({ email });
+          //get the user from the database
+          const student = await userCollection.findOne({ email });
 
-    //       const classArray = student.
+          const classArray = student.Courses;
 
-    //     }
-    // })
+          res.send(classArray);
+
+        } catch (error) {
+          console.error(error);
+          res.status(500).send(false); // Internal server error
+        }
+    })
 
     app.get("/api", (req, res) => {
         res.json({"users": ["userOne", "userTwo", "userThree"] })
