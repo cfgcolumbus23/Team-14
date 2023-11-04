@@ -1,3 +1,5 @@
+
+
 // Import Libraries
 const { MongoClient } = require('mongodb');
 const express = require('express');
@@ -25,6 +27,8 @@ async function main() {
         const dataToInsert = req.body;
         const usersCollection = client.db().collection('Users');
 
+        
+
         usersCollection.insertOne(dataToInsert, (err, result) => {
             if (err) {
                 console.error('Error Signing User Up', err);
@@ -35,16 +39,8 @@ async function main() {
         });
     });
 
-    //Get Request for going to Home Page
-    app.get('/api/go-to-student-page',(req,res)=>{
-        const filePath = path.join(__dirname,'/public','student-home-page.html');
-        res.sendFile(filePath);
-    })
-
-    //Get Request for going to Admin Page
-    app.get('/api/go-to-admin-page',(req,res)=>{
-        const filePath = path.join(__dirname,'/public','admin-page.html');
-        res.sendFile(filePath);
+    app.get("/api", (req, res) => {
+        res.json({"users": ["userOne", "userTwo", "userThree"] })
     })
 
     app.listen(3000, () => {
