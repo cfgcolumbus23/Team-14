@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Luckiest+Guy&family=Short+Stack&display=swap');
+.body {
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 0;
+    padding-left: 40px;
+}
+
+.header {
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: auto;
+}
+
+.header h1 {
+    color: #B40909;
+    margin: 10px;
+    font-family: 'Short Stack', cursive;;
+}
+
+.header h3 {
+    margin: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+input {
+    size: 50px;
+}

@@ -7,13 +7,17 @@ import Login from './/pages/Login';
 function App() {
     
     return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path='/login' component={Login} />
-            </Routes>
-        </Router>
-    );
+        <div className="App">
+            <div className='header'>
+                <h1>CTRL-R</h1>
+                <h3>Welcome!</h3>
+            </div>
+            <div className='body'>
+                <h1>Student Home Page</h1>
+                <AdminHome />
+            </div>
+        </div>
+    )
 }
 
 export default App;
